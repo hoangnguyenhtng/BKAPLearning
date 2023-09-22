@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;images&apos; to &apos;PacmanBTL/src&apos;&#x0D;&#x0A;- Original project: &apos;JavaPacmanGame&apos;&#x0D;&#x0A;- Destination element: &apos;PacmanBTL/src&apos;&#x0D;&#x0A;- Original element: &apos;JavaPacmanGame/JavaPacman-master/src/images&apos;" description="Copy package" destination="=PacmanBTL/src" element1="/JavaPacman-master\/src&lt;images" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1683388824412" version="1.0"/>
+</session>

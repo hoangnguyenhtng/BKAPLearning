@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="SmartImportWizard">
+		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
+		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
+		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\hoang\Downloads\JavaPacman"/>
+			<item value="C:\Users\hoang\Downloads\JavaPacman-master"/>
+			<item value="C:\Users\hoang\Downloads\pacman-game-master"/>
+			<item value="C:\Users\hoang\Downloads\pacman-main\pacman-main"/>
+			<item value="C:\Users\hoang\Downloads\pacman-master (3)"/>
+			<item value="C:\Users\hoang\Downloads\Pacman-master (1)"/>
+			<item value="C:\Users\hoang\Downloads\Pacman-master\Pacman-master"/>
+			<item value="C:\Users\hoang\Downloads\JAVA_PACMAN_SHOOTER_WITH_SOURCE_CODE\PacManTopDownShooter"/>
+			<item value="D:\Esclipse Workspace\Pacman-master"/>
+			<item value="C:\Users\hoang\Downloads\Pacman-master-20230426T071859Z-001"/>
+		</list>
+	</section>
+</section>

@@ -1,0 +1,13 @@
+
+u
+java:S1192c"ZDefine a constant instead of duplicating this literal "Error: Role is not found." 4 times.(ÉÿÊ–ùÿÿÿÿ
+E
+java:S5411M"(Use a primitive boolean expression here.(‡Ö…²8ŸàÛ©›1
+E
+java:S5411S"(Use a primitive boolean expression here.(Œ‰ÓŒ8 àÛ©›1
+<
+java:S14527"&Remove usage of generic wildcard type.(—­è€
+o
+java:S6204B"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8¿àÛ©›1
+A
+java:S1452L"&Remove usage of generic wildcard type.(éã°éúÿÿÿÿ

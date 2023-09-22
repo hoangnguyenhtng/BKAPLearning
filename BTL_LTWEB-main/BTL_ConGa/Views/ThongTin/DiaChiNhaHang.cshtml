@@ -1,0 +1,240 @@
+﻿<!-- Start Top Search -->
+<style>
+	.diachi{
+		font-size: 25px;
+		line-height: 24px;
+		letter-spacing: .0015em;
+		font-weight: 700;
+		margin-bottom: 12px;
+		color: #00b2a9;
+	}
+	.line{
+		width: 65px;
+		height: 2px;
+		background-color: #e0e0e0;
+		margin-bottom: 8px;
+	}
+	.thongtin{
+		border: 1px solid #e0e0e0;
+		padding: 12px 16px;
+		margin-bottom: 12px;
+		border-radius: 10px;
+	}
+</style>
+<div class="top-search">
+    <div class="container">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+            <input type="text" class="form-control" placeholder="Search">
+            <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+        </div>
+    </div>
+</div>
+<!-- End Top Search -->
+<!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Địa Điểm</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Trang Chủ</a></li>
+                    <li class="breadcrumb-item active">Địa Điểm</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Title Box -->
+<!-- Start Contact Us  -->
+<div class="contact-box-main">
+    <div class="container">
+			<div class="row thongtin">
+				<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12">
+                    <div id="map" style="width: 100%; height: 100%;"></div>
+				</div>
+				<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
+					<div class="diachi">
+						ĐỊA CHỈ
+						<div class="line"></div>						
+					</div>
+					<div>
+					<p style="color: #ff7d01; font-size: 20px;">Nhà Hàng Gà Rán Four Chicken - HN</p>
+					<p><a href="https://goo.gl/maps/J2UH4TZ5Wy9Uc2mv9" target="_blank">No. 3 Street Cau Giay, Lang Thuong Ward, District Cau Giay, Ha Noi City</a></p>
+					</div>
+					<br/>
+					<div class="diachi">
+						GIỜ MỞ CỬA
+						<div class="line"></div>
+					</div>
+					<div>
+						7:00 am - 9:00 pm
+					</div>
+					<br/>
+					<div class="diachi">
+						HÌNH ẢNH NHÀ HÀNG
+						<div class="line"></div>
+					</div>
+					<img style="width: 100%" src="../Chicken/images/About.png"/>
+				</div>
+			</div>
+		</div>
+    </div>
+<!-- End Cart -->
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiaGlldWRtIiwiYSI6ImNsZmh2dWxtdTBoODMzenFwZXlnbHF5czIifQ.MNtyb149qJNwzdcY0MpSFg';
+
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [105.85, 21.0], //Tọa độ lãnh thổ Việt Nam
+        zoom: 12.0
+    });
+    //Marker: Điểm đánh dấu
+    var marker = new mapboxgl.Marker({
+        color: "red", //Màu của Marker là đỏ
+        draggable: true,
+        anchor: 'bottom', //Nhãn Hà Nội nằm dưới Marker
+    }).setLngLat([105.85, 21.0]) //Thiết lập Marker tại hà Nội
+
+    ////Thêm popup
+    //var popup = new mapboxgl.Popup({
+    //    closeButton: true,
+    //    closeOnClick: false,
+    //    anchor: 'right',
+    //}).setLngLat([105.85, 21.0])
+    //    .setHTML("<h1>Hello HN!</h1>")
+    //    .addTo(map);
+
+
+
+    //GeolocateControl: Vị trí của thiết bị
+    var vitricuaban = new mapboxgl.GeolocateControl
+    ({
+        positionOptions: {
+            enableHighAccuracy: true
+        },
+        trackUserLocation: true
+    });
+
+    //Scale Control: Khoảng cách trên bản đồ so với thực tế
+    var scale = new mapboxgl.ScaleControl
+    ({
+        maxWidth: 80,
+        unit: 'imperial'
+    });
+
+    //Full screen
+    map.addControl(new mapboxgl.FullscreenControl());
+
+    //Khởi tạo một Markerblue
+    var markerblue = new mapboxgl.Marker
+    ({
+        color: 'blue',
+        draggable: true,
+    });
+
+
+
+    // Lưu trữ đối tượng MapboxDirections trong một biến
+    var directions = new MapboxDirections
+    ({
+        accessToken: mapboxgl.accessToken,
+        unit: 'metric',
+        profile: 'mapbox/driving-traffic'
+    });
+
+
+    map.on('load', function ()
+    {
+        //Thêm marker vào map
+        marker.addTo(map);
+
+
+        //NavigationControl: Nút Zoom + - và la bàn
+        map.addControl(new mapboxgl.NavigationControl({
+            showCompass: true,
+            showZoom: true,
+        }));
+        // Thêm Scale Control vào map
+        map.addControl(scale);
+        scale.setUnit('metric');
+
+        // Thêm vị trí của bạn vào map
+        map.addControl(vitricuaban);
+
+
+        // Thêm directions vào bản đồ và set vị trí
+        map.addControl(directions, 'top-left');
+
+        // Set giá trị cho điểm A của directions
+        //directions.setOrigin([marker.getLngLat().lng, marker.getLngLat().lat]);
+    });
+
+    //Sự kiện click vào bản đồ
+    map.on('click', function (e)
+    {
+
+        //Hiển thị marker
+        markerblue.setLngLat([e.lngLat.lng, e.lngLat.lat]).addTo(map);
+
+
+        // Xóa bỏ điểm cuối nếu tồn tại điểm cuối
+        //if (directions.destination)
+        //    directions.removeWaypoint(directions.getWaypoints().length - 1);
+
+        // Xóa bỏ đường đi hiện tại
+        /*directions.removeRoute();*/
+
+        // Set giá trị cho điểm A cho directions
+        directions.setOrigin([marker.getLngLat().lng, marker.getLngLat().lat]);
+
+        //  Set giá trị cho điểm B cho directions
+        directions.setDestination([markerblue.getLngLat.lng, markerblue.getLngLat.lat]);
+
+
+    });
+
+    vitricuaban.on('geolocate', function (event) // sự kiện sảy ra khi người dùng click vào vị trí của tôi
+    {
+
+        // Lấy tọa độ của vị trí hiện tại của thiết bị
+        var t = event.coords;
+
+
+        // Set giá trị cho điểm A cho directions
+        //directions.setOrigin([marker.getLngLat().lng, marker.getLngLat().lat]);
+
+        if (markerblue != null)
+            markerblue.remove();
+
+        // Xóa bỏ điểm cuối nếu tồn tại điểm cuối
+        //if (directions.destination)
+        //    directions.removeWaypoint(directions.getWaypoints().length - 1);
+
+        // Set giá trị cho điểm A cho directions
+        directions.setOrigin([marker.getLngLat().lng, marker.getLngLat().lat]);
+
+        // Đặt điểm B của MapboxDirections là vị trí của thiết bị
+        directions.setDestination([t.longitude, t.latitude]);
+
+    });
+
+
+    var popup_map = new mapboxgl.Popup
+    ({
+        closeButton: false
+    });
+
+    map.on('mousemove', function (e) {
+
+        popup_map.setLngLat(e.lngLat).setHTML('Kinh độ: ' + e.lngLat.lng.toFixed(4) + '<br />Vĩ độ: ' + e.lngLat.lat.toFixed(4)).addTo(map);
+    });
+
+    map.on('mouseleave', function (e) {
+        popup_map.remove();
+    });
+
+
+
+</script>
